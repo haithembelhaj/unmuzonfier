@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+
 import os
 import sys
 import re
@@ -22,7 +24,7 @@ def rename(dirname, file):
     newName = file.replace('Muzon.ws', '').replace('(muzon.ws)', "").replace('_', ' ') # muzon.ws
     newName = re.sub(r'(\(|\[)?(w{3}\.)?(\w|-)+(\.\w{2,3})+(\)|\])?\s*.mp3$','.mp3',newName) # [(www.somebullshit.com)]
     newName = re.sub(r'^\s+','', newName) # whitespaces
-    newName = re.sub(r'\s+$','', newName) # whitespaces
+    newName = re.sub(r'\s+.mp3$','.mp3', newName) # whitespaces
     inPath = os.path.join(dirname, file)
     outPath = os.path.join(dirname, newName)
     os.rename(inPath, outPath)
