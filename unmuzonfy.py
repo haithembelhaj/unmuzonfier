@@ -60,4 +60,8 @@ if __name__ == "__main__":
         path = sys.argv[2]
     else:
         path = sys.argv[1]
-    readPath(path)
+    if os.path.isdir(path):
+        readPath(path)
+    elif os.path.isfile(path):
+        rename(os.path.dirname(path),os.path.basename(path))
+
